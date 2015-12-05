@@ -52,15 +52,15 @@ PRODUCT_PACKAGES += \
 	libwfcu \
 	libwpa_client \
 	hostapd \
-        hostapd_default.conf \
-        hostapd.accept \
-        hostapd.deny \
+	hostapd_default.conf \
+	hostapd.accept \
+	hostapd.deny \
 	dhcpcd.conf \
 	wpa_supplicant
 
 PRODUCT_PACKAGES += \
-    libwcnss_qmi \
-    wcnss_service
+	libwcnss_qmi \
+	wcnss_service
 
 	
 PRODUCT_COPY_FILES += \
@@ -72,60 +72,60 @@ PRODUCT_COPY_FILES += \
 	
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	VisualizationWallpapers \
+	librs_jni
 
 # Display
 PRODUCT_PACKAGES += \
-    copybit.msm8960 \
-    gralloc.msm8960 \
-    hwcomposer.msm8960 \
-    libgenlock \
-    memtrack.msm8960
+	copybit.msm8960 \
+	gralloc.msm8960 \
+	hwcomposer.msm8960 \
+	libgenlock \
+	memtrack.msm8960
 	
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8960 \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libaudio-resampler \
+	audio.primary.msm8960 \
+	audio.a2dp.default \
+	audio.usb.default \
+	audio.r_submix.default \
+	libaudio-resampler \
     #tinymix
 	
 	
 # Omx
 PRODUCT_PACKAGES += \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
-    libc2dcolorconvert \
-    libdashplayer \
-    libdivxdrmdecrypt \
-    libmm-omxcore \
-    libstagefrighthw
+	libOmxAacEnc \
+	libOmxAmrEnc \
+	libOmxCore \
+	libOmxEvrcEnc \
+	libOmxQcelp13Enc \
+	libOmxVdec \
+	libOmxVenc \
+	libc2dcolorconvert \
+	libdashplayer \
+	libdivxdrmdecrypt \
+	libmm-omxcore \
+	libstagefrighthw
 
 # Doze
 #PRODUCT_PACKAGES += \
-    HLDoze \
-    G2Doze
+	HLDoze \
+	G2Doze
 	
 # Extended media support
 PRODUCT_PACKAGES += \
-    qcmediaplayer \
-    libextmedia_jni
+	qcmediaplayer \
+	libextmedia_jni
 
 PRODUCT_BOOT_JARS += \
-    qcmediaplayer
+	qcmediaplayer
 
 # Audio Policy Config
 PRODUCT_COPY_FILES += \
-    	$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+	$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
 	#$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 	
@@ -140,8 +140,8 @@ PRODUCT_COPY_FILES += \
 
 # WiFi binary
 PRODUCT_PACKAGES += \
-    libwfcu \
-    wcnss_service \
+	libwfcu \
+	wcnss_service \
 #    conn_init \
     
 # libxml2 is needed for camera
@@ -161,8 +161,8 @@ PRODUCT_BOOT_JARS += tcmiface
 
 # Sony timekeep
 PRODUCT_PACKAGES += \
-    timekeep \
-    TimeKeep
+	timekeep \
+	TimeKeep
 
 # Power
 PRODUCT_PACKAGES += \
@@ -180,11 +180,11 @@ PRODUCT_PACKAGES += \
 
 # Fix symbols (Dont need now, but maybe use on the future)
 #PRODUCT_PACKAGES += \
-    libhl
+	libhl
 
 PRODUCT_PACKAGES += \
-    com.qualcomm.location \
-        flp.msm8960
+	com.qualcomm.location \
+	flp.msm8960
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -193,18 +193,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf \
 	$(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf \
 	$(LOCAL_PATH)/configs/izat.conf:system/etc/izat.conf \
-	$(LOCAL_PATH)/configs/cacert_location.pem:system/etc/cacert_location.pem \
+	$(LOCAL_PATH)/configs/cacert_location.pem:system/etc/cacert_location.pem
 
-	
 # Media
-
-ifneq($(BOARD_USES_QCOM_HARDWARE), true)
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_codecs_aosp.xml:system/etc/media_codecs.xml
-else
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
-endif
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
@@ -212,13 +205,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/interface_permissions.xml:system/etc/permissions/interface_permissions.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 #PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml \
+	$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 #Rootdir
 PRODUCT_PACKAGES += \
@@ -274,16 +267,16 @@ PRODUCT_COPY_FILES += \
 
 # NFC Support
 PRODUCT_PACKAGES += \
-    nfc.msm8960 \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras \
+	nfc.msm8960 \
+	libnfc \
+	libnfc_jni \
+	Nfc \
+	Tag \
+	com.android.nfc_extras \
 
 # NFC access control + feature files + configuration
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+	frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
    
 
     
@@ -291,8 +284,8 @@ PRODUCT_COPY_FILES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
+	librs_jni \
+	com.android.future.usb.accessory
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -300,22 +293,22 @@ PRODUCT_PACKAGES += \
 	
 # Qualcomm Random Numbers Generator
 PRODUCT_PACKAGES += \
-    qrngd \
-    qrngp
+	qrngd \
+	qrngp
 
 PRODUCT_PACKAGES += \
 	libemoji \
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
+	com.qc.hardware=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
-		  sys.io.scheduler=bfq
+	sys.io.scheduler=bfq
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 #PRODUCT_PROPERTY_OVERRIDES += \
@@ -331,7 +324,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Perfd
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
+	ro.vendor.extension_library=libqti-perfd-client.so
 #	ro.vendor.extension_library=/system/lib/libqc-opt.so \
 #	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
@@ -377,40 +370,40 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hwui.text_large_cache_height=1024
 
  PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.qmi.adb_logmask=0
+	persist.data.qmi.adb_logmask=0
 
 #Sound config
 PRODUCT_PROPERTY_OVERRIDES += \
-		lpa.decode=false \
-		lpa.use-stagefright=false \
-		qcom.hw.aac.encoder=true \
-		persist.audio.fluence.mode=endfire \
-		persist.audio.dualmic.config=false \
-		persist.audio.vr.enable=false \
-		persist.audio.handset.mic=analog \
-		persist.audio.handset.mic.type=analog \
-		docking_speaker=on \
-		docking_event=0 \
-		dump.audio_hal=false \
-		persist.audio.lowlatency.rec=false \
-		af.resampler.quality=255 \
-		mpq.audio.decode=true 
+	lpa.decode=false \
+	lpa.use-stagefright=false \
+	qcom.hw.aac.encoder=true \
+	persist.audio.fluence.mode=endfire \
+	persist.audio.dualmic.config=false \
+	persist.audio.vr.enable=false \
+	persist.audio.handset.mic=analog \
+	persist.audio.handset.mic.type=analog \
+	docking_speaker=on \
+	docking_event=0 \
+	dump.audio_hal=false \
+	persist.audio.lowlatency.rec=false \
+	af.resampler.quality=255 \
+	mpq.audio.decode=true 
 
 # media
 #PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.hw.aac.encoder=true \
-    mm.enable.smoothstreaming=true
+	qcom.hw.aac.encoder=true \
+	mm.enable.smoothstreaming=true
 
 # gps
 #PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.agps_provider=1 \
-    ro.qc.sdk.izat.premium_enabled=0 \
-    ro.qc.sdk.izat.service_mask=0x0 \
-    persist.gps.qc_nlp_in_use=0
+	ro.gps.agps_provider=1 \
+	ro.qc.sdk.izat.premium_enabled=0 \
+	ro.qc.sdk.izat.service_mask=0x0 \
+	persist.gps.qc_nlp_in_use=0
 
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false    
+	dalvik.vm.dex2oat-swap=false    
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.ringtone=Orion.ogg
