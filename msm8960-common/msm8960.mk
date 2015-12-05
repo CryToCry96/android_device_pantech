@@ -150,9 +150,9 @@ PRODUCT_PACKAGES += \
 	libxml2
 
 PRODUCT_PACKAGES += \
-	libstlport \
 	libcnefeatureconfig \
-	libboringssl-compat
+	libboringssl-compat \
+	#libstlport
 
 #Add tcmiface support 6.0
 PRODUCT_PACKAGES += tcmiface
