@@ -92,7 +92,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
-    tinymix
+    #tinymix
 	
 	
 # Omx
@@ -111,7 +111,7 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Doze
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     HLDoze \
     G2Doze
 	
@@ -197,9 +197,17 @@ PRODUCT_COPY_FILES += \
 
 	
 # Media
+
+ifneq($(BOARD_USES_QCOM_HARDWARE), true)
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/media_codecs_aosp.xml:system/etc/media_codecs.xml
+else
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
+endif
+
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
 	$(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
 	$(LOCAL_PATH)/configs/interface_permissions.xml:system/etc/permissions/interface_permissions.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -310,11 +318,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 		  sys.io.scheduler=bfq
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
-PRODUCT_PROPERTY_OVERRIDES += \
+#PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.apm_sim_not_pwdn=1
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
-PRODUCT_PROPERTY_OVERRIDES += \
+#PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=0
 
 # Navigation Bar
@@ -407,4 +415,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.ringtone=Orion.ogg
 
-#$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
