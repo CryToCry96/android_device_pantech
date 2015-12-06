@@ -28,7 +28,7 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 
-TARGET_USES_LOGD := false
+#TARGET_USES_LOGD := false
 
 #USE_CLANG_PLATFORM_BUILD := true
 
