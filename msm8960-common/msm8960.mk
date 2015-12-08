@@ -111,7 +111,7 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Doze
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     HLDoze \
     G2Doze
 	
