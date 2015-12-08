@@ -62,7 +62,7 @@ BOARD_FORCE_RAMDISK_ADDRESS := 0x82200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000#0x82200000 change for new mkbootimg tool
 BOARD_KERNEL_CMDLINE := console=NULL,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 loglevel=0 vmalloc=0x16000000 maxcpus=2 androidboot.selinux=permissive
 # QCOM
-#BOARD_USES_QCOM_HARDWARE 		:= true
+BOARD_USES_QCOM_HARDWARE 		:= true
 #TARGET_USES_QCOM_BSP 			:= true
 #TARGET_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 #TARGET_GLOBAL_CPPFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
