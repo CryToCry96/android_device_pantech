@@ -44,9 +44,9 @@
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
-    //char bootloader[PROP_VALUE_MAX];
-    //char device[PROP_VALUE_MAX];
-    //char devicename[PROP_VALUE_MAX];
+    char bootloader[PROP_VALUE_MAX];
+    char device[PROP_VALUE_MAX];
+    char devicename[PROP_VALUE_MAX];
     int rc;
     FILE *fp = NULL;
     	static char tmp_buf[200];

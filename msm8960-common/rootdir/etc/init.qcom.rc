@@ -679,10 +679,6 @@ on property:crypto.driver.load=0
 #    socket pantech_pm_sock stream 666
 #    user root
     
-service preinstall /system/bin/sh /preinstall.sh
-    oneshot
-    disabled
-
 on property:sys.boot_completed=1
     start qcom-post-boot
     start preinstall
