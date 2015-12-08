@@ -85,7 +85,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320 \
-	ro.telephony.default_network=2 \
+	ro.telephony.default_network=1 \
 	telephony.lteOnGsmDevice=1 \
 	ro.product.locale.language=vi \
 	ro.product.locale.region=VN \
