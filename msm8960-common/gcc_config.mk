@@ -7,6 +7,7 @@ GCC_4_9_MODULES := \
 	libjni_jpegutil \
 	libgiftranscode \
 	libart \
+	libavcodec \
 	
 
 		
