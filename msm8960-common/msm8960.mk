@@ -32,8 +32,8 @@ PRODUCT_COPY_FILES += \
 #	$(LOCAL_PATH)/preinstall/Titanium/Titanium_Backup_PRO_v7.2.1.2.apk:system/vendor/preinstall/Titanium_Backup_PRO_v7.2.1.2.apk
 
 #Dolby
-#PRODUCT_PACKAGES += As AsUI
-#PRODUCT_COPY_FILES += \
+PRODUCT_PACKAGES += As AsUI
+PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Dolby/addon.d/23-dap.sh:system/addon.d/23-dap.sh \
 	$(LOCAL_PATH)/Dolby/etc/dolby/ds-default.xml:system/etc/dolby/ds-default.xml \
 	$(LOCAL_PATH)/Dolby/lib/libdlbdapstorage.so:system/lib/libdlbdapstorage.so \
@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES += \
 #	FastBoot
 
 #Google Camera
-#PRODUCT_PACKAGES += GCamera2
+PRODUCT_PACKAGES += GCamera2
 
 # WiFi
 PRODUCT_PACKAGES += \
