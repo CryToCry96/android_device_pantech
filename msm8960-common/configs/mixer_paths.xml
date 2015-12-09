@@ -286,7 +286,7 @@
 
     <path name="voice-speaker">
         <path name="speaker" />
-        <ctl name="RX5 Digital Volume" value="70" />
+        <ctl name="RX5 Digital Volume" value="74" />
     </path>
 
     <path name="voice-speaker-mic">

@@ -127,7 +127,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-	#$(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 	
 # Wifi        
 PRODUCT_COPY_FILES += \
@@ -150,7 +149,6 @@ PRODUCT_PACKAGES += \
 	libxml2
 
 PRODUCT_PACKAGES += \
-	libstlport \
 	libcnefeatureconfig \
 	libboringssl-compat
 
@@ -205,7 +203,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
 PRODUCT_COPY_FILES += \
@@ -406,4 +404,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.ringtone=Orion.ogg
 
-#$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
