@@ -61,17 +61,14 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FORCE_RAMDISK_ADDRESS := 0x82200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000#0x82200000 change for new mkbootimg tool
 BOARD_KERNEL_CMDLINE := console=NULL,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 loglevel=0 vmalloc=0x16000000 maxcpus=2 androidboot.selinux=permissive
+
 # QCOM
 BOARD_USES_QCOM_HARDWARE 		:= true
-TARGET_USES_QCOM_BSP 			:= true
 TARGET_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 TARGET_GLOBAL_CPPFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
-#USE_TUNNEL_MODE := true
-#USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY 	:= true
-#USE_SENSOR_MULTI_HAL			:= true
 #Disable for fix camera record
 #TARGET_GLOBAL_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-BOARD_USES_LEGACY_MMAP := true
+#BOARD_USES_LEGACY_MMAP := true
 
 # Graphics
 #BOARD_EGL_CFG := device/pantech/msm8960-common/configs/egl.cfg
@@ -92,12 +89,17 @@ OVERRIDE_RS_DRIVER 				:= libRSDriver_adreno.so
 
 # Audio
 #TARGET_QCOM_AUDIO_VARIANT 		:= caf
-BOARD_USES_ALSA_AUDIO			:= true
-#BOARD_HAVE_LOW_LATENCY_AUDIO 		:= true
-#Audio UCM
-#BOARD_USES_LEGACY_ALSA_AUDIO		:= true
-USE_LEGACY_AUDIO_POLICY := 1
-#QCOM_ADSP_SSR_ENABLED := true
+BOARD_HAVE_DOCK_USBAUDIO := true
+BOARD_USES_ALSA_AUDIO := true
+#BOARD_USES_FLUENCE_INCALL := true
+#BOARD_USES_FLUENCE_FOR_VOIP := true
+#BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
+BOARD_USES_SEPERATED_HEADSET_MIC := true
+BOARD_USES_SEPERATED_VOICE_SPEAKER := true
+BOARD_USES_SEPERATED_VOIP := true
+TARGET_USES_QCOM_COMPRESSED_AUDIO := true
+QCOM_ADSP_SSR_ENABLED := false
 
 # Media
 #TARGET_QCOM_MEDIA_VARIANT 		:= caf
@@ -110,7 +112,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS 	:= true
 
 BOARD_USES_SECURE_SERVICES 		:= true
 
-#BOARD_USES_EXTRA_THERMAL_SENSOR 	:= true
+BOARD_USES_EXTRA_THERMAL_SENSOR 	:= true
 
 BOARD_USES_CAMERA_FAST_AUTOFOCUS 	:= true
 # Camera
@@ -135,16 +137,16 @@ TARGET_PROVIDES_GPS_LOC_API := true
 
 # PowerHAL
 TARGET_POWERHAL_VARIANT			:= qcom
-CM_POWERHAL_EXTENSION			:= lehoang
+#CM_POWERHAL_EXTENSION			:= lehoang
 
 # LightHAL
 TARGET_PROVIDES_LIBLIGHT 			:= true
 
 # Enable WEBGL in WebKit
-ENABLE_WEBGL 					:= true
+#ENABLE_WEBGL 					:= true
 
 # Webkit
-TARGET_FORCE_CPU_UPLOAD 			:= true
+#TARGET_FORCE_CPU_UPLOAD 			:= true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND 		:= true
@@ -176,7 +178,7 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
        device/pantech/msm8960-common/sepolicy
 
-TARGET_GCC_VERSION_EXP := 4.8
+#TARGET_GCC_VERSION_EXP := 4.8
 KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
 KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/../arm-cortex_a15-linux-gnueabihf-linaro_4.9/bin"
 #-include device/pantech/msm8960-common/sm.mk

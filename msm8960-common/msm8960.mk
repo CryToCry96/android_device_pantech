@@ -105,10 +105,9 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libc2dcolorconvert \
-    libdashplayer \
     libdivxdrmdecrypt \
     libmm-omxcore \
-    libstagefrighthw
+    libdivxdrmdecrypt
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -117,11 +116,8 @@ PRODUCT_PACKAGES += \
 	
 # Extended media support
 PRODUCT_PACKAGES += \
-    qcmediaplayer \
     libextmedia_jni
 
-PRODUCT_BOOT_JARS += \
-    qcmediaplayer
 
 # Audio Policy Config
 PRODUCT_COPY_FILES += \
@@ -149,8 +145,7 @@ PRODUCT_PACKAGES += \
 	libxml2
 
 PRODUCT_PACKAGES += \
-	libcnefeatureconfig \
-	libboringssl-compat
+	libcnefeatureconfig
 
 #Add tcmiface support 6.0
 PRODUCT_PACKAGES += tcmiface
@@ -281,7 +276,6 @@ PRODUCT_COPY_FILES += \
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \
-    com.android.future.usb.accessory
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
