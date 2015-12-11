@@ -107,7 +107,8 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
     libmm-omxcore \
-    libdivxdrmdecrypt
+    libdivxdrmdecrypt \
+    libstagefrighthw
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -150,7 +151,9 @@ PRODUCT_PACKAGES += \
 #Add tcmiface support 6.0
 PRODUCT_PACKAGES += tcmiface
 
-PRODUCT_BOOT_JARS += tcmiface
+PRODUCT_BOOT_JARS += \
+    tcmiface \
+    libstagefrighthw
 
 # Sony timekeep
 PRODUCT_PACKAGES += \
