@@ -112,7 +112,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 
-$(shell  cp -f $(ANDROID_BUILD_TOP)/device/pantech/ef52l/vibrator/vibrator.c $(ANDROID_BUILD_TOP)/hardware/libhardware_legacy/vibrator/vibrator.c);
+#$(shell  cp -f $(ANDROID_BUILD_TOP)/device/pantech/ef52l/vibrator/vibrator.c $(ANDROID_BUILD_TOP)/hardware/libhardware_legacy/vibrator/vibrator.c);
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
