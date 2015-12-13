@@ -21,15 +21,15 @@ add_lunch_combo cm_ef51-eng
 add_lunch_combo aicp_ef51-userdebug
 add_lunch_combo aicp_ef51-eng
 
-__ef51_init_tools()
-{
-	local n=
-	
-	for n in "$(dirname "${BASH_SOURCE[1]}")"/tools/* ; do
-		[ -x "${n}" ] || continue
-		alias ef51-"$(basename "${n}")"="$(realpath "${n}")"
-	done
-}
-
-__ef51_init_tools
-unset __ef51_init_tools
+#__ef51_init_tools()
+#{
+#	local n=
+#	
+#	for n in "$(dirname "${BASH_SOURCE[1]}")"/tools/* ; do
+#		[ -x "${n}" ] || continue
+#		alias ef51-"$(basename "${n}")"="$(realpath "${n}")"
+#	done
+#}
+#
+#__ef51_init_tools
+#unset __ef51_init_tools

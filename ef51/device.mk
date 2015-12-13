@@ -33,7 +33,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 #	lights.msm8960
 
 # audio UCM files
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
                        device/pantech/ef51/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
 # MSM8960/MPQ8064 firmware
 PRODUCT_COPY_FILES += \
@@ -87,7 +87,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.dalvik.multithread=true \
 
 #Vibrator
-PRODUCT_COPY_FILES += \
+
+PRODUCT_PACKAGES += \
+     hlvib \
+     init.ef51.rc
+
+#PRODUCT_COPY_FILES += \
     device/pantech/ef51/prebuilt/piezod:/system/bin/piezod \
     device/pantech/ef51/prebuilt/immvibed:/system/bin/immvibed
 

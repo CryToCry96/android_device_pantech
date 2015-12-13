@@ -26,7 +26,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #
-import init.ef51.rc
 
 on early-init
     mkdir /firmware 0771 system system
@@ -183,3 +182,20 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
+
+#Add by Le Hoang
+
+on init
+    chown system system /dev/tspdrv
+    chmod 0660 /dev/tspdrv
+
+    mkdir /dev/pipes 0771 system system
+    export VIBE_PIPE_PATH /dev/pipes
+
+service hlvib /system/bin/hlvib
+    class main
+    #user root
+    #group root
+    user system
+    group system
+    oneshot
