@@ -118,6 +118,9 @@ BOARD_USES_CAMERA_FAST_AUTOFOCUS 	:= true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA 			:= true
 
+#Ril class
+BOARD_RIL_CLASS := ../../../device/pantech/msm8960-common/ril/
+
 #Use cyanogenmod hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 
