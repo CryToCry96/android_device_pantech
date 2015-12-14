@@ -84,13 +84,7 @@ PRODUCT_PACKAGES += \
     Torch
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=320 \
-	ro.telephony.default_network=2 \
-	telephony.lteOnGsmDevice=1 \
-	ro.product.locale.language=vi \
-	ro.product.locale.region=VN \
-	ro.qualcomm.bt.hci_transport=smd \
-	persist.sys.dalvik.multithread=true \
+	ro.sf.lcd_density=320
 
 #Copy kernel header if using prebuilt kernel
 #ifneq ($(OUT),)

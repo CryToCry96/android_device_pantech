@@ -78,13 +78,7 @@ PRODUCT_PACKAGES += \
     Torch
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=480 \
-	ro.telephony.default_network=1 \
-	telephony.lteOnGsmDevice=1 \
-	ro.product.locale.language=vi \
-	ro.product.locale.region=VN \
-	ro.qualcomm.bt.hci_transport=smd \
-	persist.sys.dalvik.multithread=true \
+	ro.sf.lcd_density=480
 
 #Vibrator
 
