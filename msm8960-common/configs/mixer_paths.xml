@@ -206,8 +206,8 @@
 
     <path name="adc1">
         <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="SLIM TX7 MUX" value="DEC6" />
-        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="SLIM TX7 MUX" value="DEC7" />
+        <ctl name="DEC7 MUX" value="ADC1" />
     </path>
 
     <path name="adc2">
