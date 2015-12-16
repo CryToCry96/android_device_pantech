@@ -313,7 +313,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.telephony.default_network=2 \
+	ro.telephony.default_network=9 \
 	telephony.lteOnGsmDevice=1 \
 	ro.product.locale.language=vi \
 	ro.product.locale.region=VN \
