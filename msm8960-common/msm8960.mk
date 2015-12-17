@@ -233,8 +233,7 @@ PRODUCT_PACKAGES += \
 
 # Qcom scripts
 PRODUCT_PACKAGES += \
-	init.qcom.bt.sh \
-	init.qcom.modem_links.sh
+	init.qcom.bt.sh
 	
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

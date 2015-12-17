@@ -62,11 +62,6 @@ on early-boot
     
     #setprop qcom.audio.init complete
 
-service modem-sh /system/bin/sh /system/etc/init.qcom.modem_links.sh
-    class core
-    user root
-    oneshot
-
 on boot
 # basic network init
 #    ifup lo
@@ -686,7 +681,6 @@ service preinstall /system/bin/sh /preinstall.sh
 on property:sys.boot_completed=1
     start qcom-post-boot
     start preinstall
-    write /sys/block/mmcblk0/queue/scheduler noop
 
 #service atfwd /system/bin/ATFWD-daemon
 #    class late_start
