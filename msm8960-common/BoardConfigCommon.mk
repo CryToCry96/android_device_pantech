@@ -16,6 +16,7 @@
 # inherit from the proprietary version
 -include vendor/pantech/msm8960-common/BoardConfigVendor.mk
 TARGET_SPECIFIC_HEADER_PATH 		:= device/pantech/msm8960-common/include
+TARGET_RELEASETOOLS_EXTENSIONS 		:= device/pantech/msm8960-common
 
 BOARD_VENDOR 					:= pantech
 
