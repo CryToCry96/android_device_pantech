@@ -344,6 +344,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qc.sensors.wl_dis=true \
 	ro.qualcomm.sensors.smd=true \
 
+# Enable multiwindow mode by default
+PRODUCT_PROPERTY_OVERRIDES += \
+        persist.sys.debug.multi_window=true
+
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.adb.secure=0 \
 	ro.secure=0 \
