@@ -1,4 +1,4 @@
-#define LOG_TAG "[LeHoang_EF51]OpenImmVibed"
+#define LOG_TAG "[LeHoang_EF51]Vib_ctl"
 
 #include <cutils/log.h>
 
