@@ -240,7 +240,7 @@
     <integer name="config_multiuserMaximumUsers">4</integer>
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
-
+<!--
     <integer-array name="config_defaultNotificationVibePattern">
         <item>0</item>
         <item>350</item>
@@ -253,7 +253,7 @@
         <item>150</item>
         <item>100</item>
     </integer-array>
-
+-->
 <!-- Add gms localtion fix agps -->
     <string-array name="config_locationProviderPackageNames">
         <item>com.google.android.gms</item>
