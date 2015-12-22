@@ -156,9 +156,13 @@ static char *camera_fixup_setparams(int id, const char *settings)
 
    // params.set(android::CameraParameters::KEY_VIDEO_STABILIZATION, "false");
     if (!videoMode && !strncmp(params.get(android::CameraParameters::KEY_SCENE_MODE),"hdr",3)) {
-        params.set("hdr-mode", "1");
+        params.set(android::CameraParameters::KEY_HDR,
+                android::CameraParameters::HDR_ON);
+        //params.set("hdr-mode", "1");
     } else {
-        params.set("hdr-mode", "0");
+        params.set(android::CameraParameters::KEY_HDR,
+                android::CameraParameters::HDR_OFF);
+        //params.set("hdr-mode", "0");
     }
 
 #if !LOG_NDEBUG
