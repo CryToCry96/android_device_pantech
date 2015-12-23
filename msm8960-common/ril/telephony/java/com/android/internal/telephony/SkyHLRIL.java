@@ -19,9 +19,15 @@ package com.android.internal.telephony;
 import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
+import android.os.AsyncResult;
 import android.os.Parcel;
+import android.os.Message;
 import android.os.SystemProperties;
 import android.util.Log;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Custom Qualcomm RIL for Pantech msm8960
