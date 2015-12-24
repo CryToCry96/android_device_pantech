@@ -57,8 +57,12 @@ const char CameraParameters::HDR_SETTING_MODE_OFF[] = "hdr-setting-mode-off";\
 const char CameraParameters::HDR_SETTING_MODE_ON[] = "hdr-setting-mode-on";\
 const char CameraParameters::KEY_HDR[] = "hdr";\
 const char CameraParameters::KEY_SUPPORTED_HDR[] = "hdr-values";\
+const char CameraParameters::KEY_QC_ISO_MODE[] = "iso";\
+const char CameraParameters::KEY_QC_SUPPORTED_ISO_MODES[] = "iso-values";\
 const char CameraParameters::HDR_ON[] = "hdr-on";\
 const char CameraParameters::HDR_OFF[] = "hdr-off";\
+const char CameraParameters::KEY_QC_ZSL[] = "zsl";\
+const char CameraParameters::KEY_QC_SUPPORTED_ZSL_MODES[] = "zsl-values";\
 const char CameraParameters::KEY_SKY_COLOREXT_COORDINATES_R[] = "pantech-color-extraction-coordinates-r";\
 const char CameraParameters::KEY_SKY_COLOREXT_COORDINATES_G[] = "pantech-color-extraction-coordinates-g";\
 const char CameraParameters::KEY_SKY_COLOREXT_COORDINATES_B[] = "pantech-color-extraction-coordinates-b";\
@@ -211,6 +215,8 @@ void CameraParameters::setColorExtractionRGB_R(int x, int y) {}\
 	static const char CAMNOTE_AUTO[];\
 	static const char KEY_SUPPORTED_OJT[];\
 	static const char FLASH_MODE_ZSL_TORCH_AUTO[];\
+    static const char KEY_QC_ZSL[];\
+    static const char KEY_QC_SUPPORTED_ZSL_MODES[];\
 	static const char SKY_IPL_CAM_CARTOON[];\
     static const char SKY_IPL_WIDGET_CARTOON[];\
 	static const char SKY_IPL_SKETCH[];\
@@ -219,6 +225,8 @@ void CameraParameters::setColorExtractionRGB_R(int x, int y) {}\
     static const char KEY_SUPPORTED_HDR[];\
     static const char HDR_OFF[];\
     static const char HDR_ON[];\
+    static const char KEY_QC_ISO_MODE[];\
+    static const char KEY_QC_SUPPORTED_ISO_MODES[];\
     static const char KEY_HDR_SAVING_MODE[];\
     static const char HDR_SETTING_MODE_OFF[];\
     static const char HDR_SETTING_MODE_ON[];\

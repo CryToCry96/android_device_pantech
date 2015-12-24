@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014, The CyanogenMod Project
+ * Copyright (C) 2012, The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,37 +36,30 @@
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
-static char **fixed_set_params = NULL;
-
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
 static struct hw_module_methods_t camera_module_methods = {
-    .open = camera_device_open,
+    open: camera_device_open
 };
 
 camera_module_t HAL_MODULE_INFO_SYM = {
-    .common = {
-         .tag = HARDWARE_MODULE_TAG,
-         .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
-         .hal_api_version = HARDWARE_HAL_API_VERSION,
-         .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Pantech MSM8960 Camera Wrapper",
-         .author = "Le Hoang, The CyanogenMod Project",
-         .methods = &camera_module_methods,
-         .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
+    common: {
+         tag: HARDWARE_MODULE_TAG,
+         version_major: 1,
+         version_minor: 0,
+         id: CAMERA_HARDWARE_MODULE_ID,
+         name: "Pantech MSM8960 Camera Wrapper",
+         author: "Le Hoang, The CyanogenMod Project",
+         methods: &camera_module_methods,
+         dso: NULL, /* remove compilation warnings */
+         reserved: {0}, /* remove compilation warnings */
     },
-    .get_number_of_cameras = camera_get_number_of_cameras,
-    .get_camera_info = camera_get_camera_info,
-    .set_callbacks = NULL, /* remove compilation warnings */
-    .get_vendor_tag_ops = NULL, /* remove compilation warnings */
-    .open_legacy = NULL, /* remove compilation warnings */
-    .set_torch_mode = NULL, /* remove compilation warnings */
-    .init = NULL, /* remove compilation warnings */
-    .reserved = {0}, /* remove compilation warnings */
+    get_number_of_cameras: camera_get_number_of_cameras,
+    get_camera_info: camera_get_camera_info,
+    set_callbacks: NULL,
 };
 
 typedef struct wrapper_camera_device {
@@ -97,12 +90,12 @@ static int check_vendor_module()
     return rv;
 }
 
-static char *camera_fixup_getparams(int id __attribute__((unused)),
-        const char *settings)
-{
+const static char * iso_values[] = {"auto,ISO100,ISO200,ISO400,ISO800,ISO1600,ISO3200"};
 
+static char *camera_fixup_getparams(int id, const char *settings)
+{
     bool videoMode = false;
-    char *manipBuf;
+   // char *manipBuf;
 
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -116,6 +109,21 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
         videoMode = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
     }
 
+    params.set(android::CameraParameters::KEY_QC_SUPPORTED_ISO_MODES, iso_values[id]);
+
+    /* Set supported scene modes */
+  /*  if (params.get(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES)) {
+        params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES,
+                "auto,portrait,landscape,portrait,snow,beach,sunset,night,backlight,sports,antishake,flowers,candlelight,fireworks,party,theatre,action,ar,indoor,text,hdr");
+    }*/
+    if (id = 1) {
+        params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, "auto,action,night,sunset,party");
+    }
+
+    //params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
+    //params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
+	//Add HDR
+/*
     if (!videoMode) {
         manipBuf = strdup(params.get(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES));
         if (manipBuf != NULL && strstr(manipBuf,"hdr") == NULL) {
@@ -124,7 +132,7 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
                 manipBuf);
         }
         free(manipBuf);
-    }
+    }*/
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -139,7 +147,6 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
 
 static char *camera_fixup_setparams(int id, const char *settings)
 {
-
     bool videoMode = false;
 
     android::CameraParameters params;
@@ -154,16 +161,40 @@ static char *camera_fixup_setparams(int id, const char *settings)
         videoMode = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
     }
 
-   // params.set(android::CameraParameters::KEY_VIDEO_STABILIZATION, "false");
-    if (!videoMode && !strncmp(params.get(android::CameraParameters::KEY_SCENE_MODE),"hdr",3)) {
-        params.set(android::CameraParameters::KEY_HDR,
-                android::CameraParameters::HDR_ON);
-        //params.set("hdr-mode", "1");
+    if (videoMode) {
+       // params.set("dis", "disable");
+        params.set(android::CameraParameters::KEY_QC_ZSL, "off");
     } else {
-        params.set(android::CameraParameters::KEY_HDR,
-                android::CameraParameters::HDR_OFF);
-        //params.set("hdr-mode", "0");
+        params.set(android::CameraParameters::KEY_QC_ZSL, "on");
     }
+
+    if(params.get("iso")) {
+        const char* isoMode = params.get(android::CameraParameters::KEY_QC_ISO_MODE);
+        if(strcmp(isoMode, "ISO100") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "100");
+        else if(strcmp(isoMode, "ISO200") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "200");
+        else if(strcmp(isoMode, "ISO400") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "400");
+        else if(strcmp(isoMode, "ISO800") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "800");
+        else if(strcmp(isoMode, "ISO1600") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "1600");
+        else if(strcmp(isoMode, "ISO3200") == 0)
+            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "3200");
+    }
+
+	//HDR
+  //  if (!videoMode && !strncmp(params.get(android::CameraParameters::KEY_SCENE_MODE),"hdr",3)) {
+    //if (!videoMode) {
+    //    params.set(android::CameraParameters::KEY_HDR,
+    //            android::CameraParameters::HDR_ON);
+      //  params.set("hdr-values", "1");
+    //} else {
+    //    params.set(android::CameraParameters::KEY_HDR,
+     //           android::CameraParameters::HDR_OFF);
+    //    params.set("hdr-values", "0");
+  //  }
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -171,10 +202,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
 #endif
 
     android::String8 strParams = params.flatten();
-    if (fixed_set_params[id])
-        free(fixed_set_params[id]);
-    fixed_set_params[id] = strdup(strParams.string());
-    char *ret = fixed_set_params[id];
+    char *ret = strdup(strParams.string());
 
     return ret;
 }
@@ -312,6 +340,7 @@ static void camera_stop_recording(struct camera_device *device)
     if (!device)
         return;
 
+
     VENDOR_CALL(device, stop_recording);
 }
 
@@ -345,7 +374,6 @@ static int camera_auto_focus(struct camera_device *device)
 
     if (!device)
         return -EINVAL;
-
 
     return VENDOR_CALL(device, auto_focus);
 }
@@ -475,11 +503,6 @@ static int camera_device_close(hw_device_t *device)
         goto done;
     }
 
-    for (int i = 0; i < camera_get_number_of_cameras(); i++) {
-        if (fixed_set_params[i])
-            free(fixed_set_params[i]);
-    }
-
     wrapper_dev = (wrapper_camera_device_t*) device;
 
     wrapper_dev->vendor->common.close((hw_device_t*)wrapper_dev->vendor);
@@ -523,14 +546,6 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         cameraid = atoi(name);
         num_cameras = gVendorModule->get_number_of_cameras();
 
-        fixed_set_params = (char **) malloc(sizeof(char *) * num_cameras);
-        if (!fixed_set_params) {
-            ALOGE("parameter memory allocation fail");
-            rv = -ENOMEM;
-            goto fail;
-        }
-        memset(fixed_set_params, 0, sizeof(char *) * num_cameras);
-
         if (cameraid > num_cameras) {
             ALOGE("camera service provided cameraid out of bounds, "
                     "cameraid = %d, num supported = %d",
@@ -568,7 +583,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         memset(camera_ops, 0, sizeof(*camera_ops));
 
         camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
-        camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
+        camera_device->base.common.version = 0;
         camera_device->base.common.module = (hw_module_t *)(module);
         camera_device->base.common.close = camera_device_close;
         camera_device->base.ops = camera_ops;
