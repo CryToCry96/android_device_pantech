@@ -380,20 +380,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Sound config
 PRODUCT_PROPERTY_OVERRIDES += \
-		lpa.decode=false \
-		lpa.use-stagefright=false \
-		qcom.hw.aac.encoder=true \
-		persist.audio.fluence.mode=endfire \
-		persist.audio.dualmic.config=false \
-		persist.audio.vr.enable=false \
-		persist.audio.handset.mic=analog \
-		persist.audio.handset.mic.type=analog \
-		docking_speaker=on \
-		docking_event=0 \
-		dump.audio_hal=false \
-		persist.audio.lowlatency.rec=false \
-		af.resampler.quality=255 \
-		mpq.audio.decode=true 
+    persist.audio.fluence.mode=endfire \
+    persist.audio.handset.mic=analog \
+    persist.audio.lowlatency.rec=false \
+    ro.qc.sdk.audio.fluencetype=none \
+    lpa.decode=false
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
