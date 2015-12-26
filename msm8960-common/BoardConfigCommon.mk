@@ -63,6 +63,10 @@ BOARD_FORCE_RAMDISK_ADDRESS := 0x82200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000#0x82200000 change for new mkbootimg tool
 BOARD_KERNEL_CMDLINE := console=NULL,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 loglevel=0 vmalloc=0x16000000 maxcpus=2 androidboot.selinux=permissive
 
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+
 # QCOM
 BOARD_USES_QCOM_HARDWARE 		:= true
 TARGET_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
@@ -154,6 +158,19 @@ TARGET_PROVIDES_LIBLIGHT 			:= true
 # Webkit
 #TARGET_FORCE_CPU_UPLOAD 			:= true
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+DONT_DEXPREOPT_PREBUILTS := true
+
+# Init
+TARGET_NO_INITLOGO := true
+
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND 		:= true
 #BOARD_CHARGER_SHOW_PERCENTAGE	:= true
@@ -161,6 +178,21 @@ BOARD_CHARGER_ENABLE_SUSPEND 		:= true
 
 # Enable keymaster app checking
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+#BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+#BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+BOARD_VOLD_MAX_PARTITIONS := 28
+
+# Camera
+COMMON_GLOBAL_CFLAGS += -DPANTECH_CAMERA_HARDWARE
+
+# Flags
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+
+TARGET_RECOVERY_QCOM_RTC_FIX 			:= true
+BOARD_SUPPRESS_SECURE_ERASE 			:= true
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=7
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := false
@@ -190,3 +222,25 @@ KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
 KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/../arm-cortex_a15-linux-gnueabihf-linaro_4.9/bin"
 #-include device/pantech/msm8960-common/sm.mk
 #include device/pantech/msm8960-common/gcc_config.mk
+
+#TWRP config
+#TARGET_RECOVERY_FSTAB := device/pantech/ef52l/ramdisk/fstab.qcom
+#RECOVERY_VARIANT := twrp
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_PREBUILT_RECOVERY_KERNEL := device/pantech/ef52l/recovery/kernel
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_INCLUDE_CRYPTO := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+TW_NO_SCREEN_BLANK := true
+TW_FLASH_FROM_STORAGE := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
