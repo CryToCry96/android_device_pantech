@@ -29,7 +29,8 @@ def end(self):
 	self.script.AppendExtra('ui_print("    Thanks for install");')
 	self.script.AppendExtra('ui_print("    Support: Le Hoang");')
 	self.script.AppendExtra('ui_print("    l.hoang87@live.com");')
-	self.script.AppendExtra('ui_print("    vegaviet.com");')
+	self.script.AppendExtra('ui_print("    xdavn.com");')
+	self.script.AppendExtra('ui_print("    Vegasoft Teams");')
 	self.script.AppendExtra('ui_print("=====================");')
 
 
