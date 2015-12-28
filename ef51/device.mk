@@ -82,7 +82,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Vibrator
 
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
      hlvib \
      init.ef51.rc
 

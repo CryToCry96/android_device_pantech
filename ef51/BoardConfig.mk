@@ -18,7 +18,7 @@
 -include vendor/pantech/ef51/BoardConfigVendor.mk
 
 
-TARGET_KERNEL_SOURCE := kernel/pantech/ef51
+TARGET_KERNEL_SOURCE := ../Pantech/kernel_ef51
 TARGET_KERNEL_CONFIG := cm_ef51_defconfig
 #TARGET_PREBUILT_KERNEL :=
 
@@ -35,9 +35,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := ef51l,ef51s,ef51k
-
-#Vibrator
-#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/pantech/ef51/vibrator/ti_drv2665.c
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/pantech/ef51/bluetooth
