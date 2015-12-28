@@ -18,7 +18,7 @@
 -include vendor/pantech/ef50l/BoardConfigVendor.mk
 
 
-TARGET_KERNEL_SOURCE := kernel/pantech/ef50l
+TARGET_KERNEL_SOURCE := ../Pantech/kernel_ef50
 TARGET_KERNEL_CONFIG := cm_ef50l_defconfig
 #TARGET_PREBUILT_KERNEL :=
 

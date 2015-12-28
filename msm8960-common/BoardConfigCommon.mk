@@ -218,17 +218,18 @@ BOARD_SEPOLICY_DIRS += \
        device/pantech/msm8960-common/sepolicy
 
 #TARGET_GCC_VERSION_EXP := 4.8
-KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
-KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/../arm-cortex_a15-linux-gnueabihf-linaro_4.9/bin"
+#KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
+#KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/../arm-cortex_a15-linux-gnueabihf-linaro_4.9/bin"
 #-include device/pantech/msm8960-common/sm.mk
 #include device/pantech/msm8960-common/gcc_config.mk
 
 #TWRP config
-#TARGET_RECOVERY_FSTAB := device/pantech/ef52l/ramdisk/fstab.qcom
-#RECOVERY_VARIANT := twrp
+#####
+RECOVERY_VARIANT := twrp
+TARGET_RECOVERY_FSTAB := device/pantech/msm8960-common/twrp/twrp.fstab #Enable this if build TWRP
+#####
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_PREBUILT_RECOVERY_KERNEL := device/pantech/ef52l/recovery/kernel
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_HAS_NO_REAL_SDCARD := true
