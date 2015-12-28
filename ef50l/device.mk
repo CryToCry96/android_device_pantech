@@ -78,6 +78,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
+PRODUCT_COPY_FILES += \
+	device/pantech/ef50l/thermald/thermald.conf:system/etc/thermald.conf \
+	device/pantech/ef50l/thermald/thermal-engine-8064.conf:system/etc/thermal-engine-8064.conf
+
 
 #Product info
 ifdef AICP_ROM

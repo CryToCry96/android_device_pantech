@@ -77,6 +77,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Torch
 
+PRODUCT_COPY_FILES += \
+	device/pantech/ef51/thermald/thermald.conf:system/etc/thermald.conf \
+	device/pantech/ef51/thermald/thermal-engine-8064.conf:system/etc/thermal-engine-8064.conf
+
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=480
 
