@@ -225,8 +225,8 @@ BOARD_SEPOLICY_DIRS += \
 
 #TWRP config
 #####
-RECOVERY_VARIANT := twrp
-TARGET_RECOVERY_FSTAB := device/pantech/msm8960-common/twrp/twrp.fstab #Enable this if build TWRP
+#RECOVERY_VARIANT := twrp
+#TARGET_RECOVERY_FSTAB := device/pantech/msm8960-common/twrp/twrp.fstab #Enable this if build TWRP
 #####
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
