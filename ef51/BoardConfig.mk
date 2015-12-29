@@ -36,6 +36,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := ef51l,ef51s,ef51k
 
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/pantech/ef51/bluetooth
 
