@@ -272,7 +272,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
    
 #Camera wrapper
-PRODUCT_PACKAGES += camera.msm8960
+#PRODUCT_PACKAGES += camera.msm8960
     
 #PRODUCT_TAGS += dalvik.gc.type-precise
 
