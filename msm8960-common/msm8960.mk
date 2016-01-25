@@ -45,7 +45,7 @@ PRODUCT_COPY_FILES += \
 #	FastBoot
 
 #Google Camera
-PRODUCT_PACKAGES += GCamera2
+PRODUCT_PACKAGES += Snap #GCamera2 Snapdragon camera
 
 # WiFi
 PRODUCT_PACKAGES += \
