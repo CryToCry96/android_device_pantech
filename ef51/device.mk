@@ -106,7 +106,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Inherit from msm8974-common
 $(call inherit-product, device/pantech/msm8960-common/msm8960.mk)
