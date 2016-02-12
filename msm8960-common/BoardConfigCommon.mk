@@ -61,7 +61,7 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FORCE_RAMDISK_ADDRESS := 0x82200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000#0x82200000 change for new mkbootimg tool
-BOARD_KERNEL_CMDLINE := console=NULL,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 loglevel=0 vmalloc=0x16000000 maxcpus=2 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=permissive lpj=67677 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 zcache
 
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
