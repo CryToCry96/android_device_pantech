@@ -32,12 +32,12 @@ PRODUCT_COPY_FILES += \
 #	$(LOCAL_PATH)/preinstall/Titanium/Titanium_Backup_PRO_v7.2.1.2.apk:system/vendor/preinstall/Titanium_Backup_PRO_v7.2.1.2.apk
 
 #Dolby
-PRODUCT_PACKAGES += As AsUI
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/Dolby/addon.d/23-dap.sh:system/addon.d/23-dap.sh \
-	$(LOCAL_PATH)/Dolby/etc/dolby/ds-default.xml:system/etc/dolby/ds-default.xml \
-	$(LOCAL_PATH)/Dolby/lib/libdlbdapstorage.so:system/lib/libdlbdapstorage.so \
-	$(LOCAL_PATH)/Dolby/lib/soundfx/libswdap-mod.so:system/lib/soundfx/libswdap-mod.so
+#PRODUCT_PACKAGES += As AsUI
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/Dolby/addon.d/23-dap.sh:system/addon.d/23-dap.sh \
+#	$(LOCAL_PATH)/Dolby/etc/dolby/ds-default.xml:system/etc/dolby/ds-default.xml \
+#	$(LOCAL_PATH)/Dolby/lib/libdlbdapstorage.so:system/lib/libdlbdapstorage.so \
+#	$(LOCAL_PATH)/Dolby/lib/soundfx/libswdap-mod.so:system/lib/soundfx/libswdap-mod.so
 
 #CAF packages
 #PRODUCT_PACKAGES += \
