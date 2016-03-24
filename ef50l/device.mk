@@ -29,8 +29,8 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 #    camera.msm8960
 
 # Lights
-#PRODUCT_PACKAGES += \
-#	lights.msm8960
+PRODUCT_PACKAGES += \
+	lights.msm8960
 
 
 # MSM8960/MPQ8064 firmware

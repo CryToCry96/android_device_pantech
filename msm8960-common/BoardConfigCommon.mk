@@ -154,9 +154,6 @@ TARGET_PROVIDES_GPS_LOC_API := true
 TARGET_POWERHAL_VARIANT			:= qcom
 #CM_POWERHAL_EXTENSION			:= lehoang
 
-# LightHAL
-TARGET_PROVIDES_LIBLIGHT 			:= true
-
 # Enable WEBGL in WebKit
 #ENABLE_WEBGL 					:= true
 

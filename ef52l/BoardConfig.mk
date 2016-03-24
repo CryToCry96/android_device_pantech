@@ -32,6 +32,9 @@ TARGET_OTA_ASSERT_DEVICE := ef52l,ef52s,ef52k
 #Vibrator
 #BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/pantech/ef52l/vibrator/vibrator.c
 
+# LightHAL
+TARGET_PROVIDES_LIBLIGHT 			:= true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/pantech/ef52l/bluetooth
 #BOARD_BLUEDROID_VENDOR_CONF := device/pantech/ef52l/bluetooth/libbt_vndcfg.txt

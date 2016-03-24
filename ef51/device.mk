@@ -29,8 +29,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 #    camera.msm8960
 
 # Lights
-#PRODUCT_PACKAGES += \
-#	lights.msm8960
+PRODUCT_PACKAGES += \
+	lights.msm8960
 
 # audio UCM files
 #PRODUCT_COPY_FILES += \
