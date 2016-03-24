@@ -44,9 +44,9 @@
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
-    char bootloader[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
-    char devicename[PROP_VALUE_MAX];
+    //char bootloader[PROP_VALUE_MAX];
+    //char device[PROP_VALUE_MAX];
+    //char devicename[PROP_VALUE_MAX];
     int rc;
     FILE *fp = NULL;
     	static char tmp_buf[200];
@@ -67,7 +67,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     UNUSED(board_type);
 
 	//Prop for ril class
-	//property_set("ro.telephony.ril_class", "SkyHLRIL_M");
+	property_set("ro.telephony.ril_class", "SkyHLRIL");
 
     rc = property_get("ro.board.platform", platform);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
@@ -91,6 +91,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if ( fp == NULL )
     {
         ALOGD("Failed to open info for board version read");
+	property_set("ro.product.device", "Please reinstall bootloader"); //Fix Unknown device
         return;
     }
     else
@@ -112,25 +113,58 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
 	property_set("ro.build.fingerprint", tmp_buf);
 	property_set("ro.product.model", device_buf);
     
-    if(!strncmp(device_buf, "IM-A860S", 8))
+    if(!strncmp(device_buf, "IM-A870S", 8))
     {
     	sprintf(tmp_buf,"ef52s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
     	property_set("ro.product.device", "ef52s");
     }
+    else if(!strncmp(device_buf, "IM-A870K", 8))
+    {
+    	sprintf(tmp_buf,"ef52k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef52k");
+    }
+    else if(!strncmp(device_buf, "IM-A870L", 8))
+    {
+    	sprintf(tmp_buf,"ef52l-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef52l");
+	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
+    }
+    else if(!strncmp(device_buf, "IM-A860S", 8))
+    {
+    	sprintf(tmp_buf,"ef52s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef51s");
+    }
     else if(!strncmp(device_buf, "IM-A860K", 8))
    	{
     	sprintf(tmp_buf,"ef52k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef52k");
+    	property_set("ro.product.device", "ef51k");
     }
     else if(!strncmp(device_buf, "IM-A860L", 8))
     {
     	sprintf(tmp_buf,"ef51-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef51");
+    	property_set("ro.product.device", "ef51l");
+	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
+    }
+    else if(!strncmp(device_buf, "IM-A850S", 8))
+    {
+    	sprintf(tmp_buf,"ef48s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef48s");
+    }
+    else if(!strncmp(device_buf, "IM-A850K", 8))
+   	{
+    	sprintf(tmp_buf,"ef49k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef49k");
+    }
+    else if(!strncmp(device_buf, "IM-A850L", 8))
+    {
+    	sprintf(tmp_buf,"ef50l-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "ef50l");
+	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
     }
     else
     {
-    	sprintf(tmp_buf,"A860-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "A860");
+    	sprintf(tmp_buf,"msm8960-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	property_set("ro.product.device", "Pantech");
     }
     	
     property_set("ro.build.description", tmp_buf);      

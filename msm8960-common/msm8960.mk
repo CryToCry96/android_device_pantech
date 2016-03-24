@@ -306,7 +306,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.apm_sim_not_pwdn=1 \
-        ro.telephony.ril_class=SkyHLRIL
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -314,7 +313,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.default_network=9 \
-	telephony.lteOnGsmDevice=1 \
 	ro.product.locale.language=vi \
 	ro.product.locale.region=VN \
 	ro.qualcomm.bt.hci_transport=smd \
