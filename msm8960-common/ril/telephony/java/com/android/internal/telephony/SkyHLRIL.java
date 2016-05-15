@@ -35,6 +35,8 @@ import java.util.Collections;
  * {@hide}
  */
 public class SkyHLRIL extends RIL implements CommandsInterface {
+    
+    private boolean dataRebooted = false;
 
     public SkyHLRIL(Context context, int networkMode, int cdmaSubscription) {
         this(context, networkMode, cdmaSubscription, null);
@@ -54,38 +56,17 @@ public class SkyHLRIL extends RIL implements CommandsInterface {
              response.sendToTarget();
          }
      }
-
+    
     @Override
-    protected void
-    processUnsolicited (Parcel p) {
-        Object ret;
-        int dataPosition = p.dataPosition(); // save off position within the Parcel
-        int response = p.readInt();
-
-        switch(response) {
-            case RIL_UNSOL_RIL_CONNECTED: ret = responseInts(p); break;
-            default:
-                // Rewind the Parcel
-                p.setDataPosition(dataPosition);
-                // Forward responses that we are not overriding to the super class
-                super.processUnsolicited(p);
-                return;
+     public void setPreferredNetworkType(int networkType , Message response) {
+         riljLog("setPreferredNetworkType: " + networkType);
+ 
+         if (!dataRebooted) {
+             riljLog("Reset radio!");
+             setRadioPower(false, null);
+             dataRebooted = true;
         }
-        switch(response) {
-            case RIL_UNSOL_RIL_CONNECTED: {
-                if (RILJ_LOGD) unsljLogRet(response, ret);
-
-                // Initial conditions
-                if (SystemProperties.get("ril.socket.reset").equals("1")) {
-                    setRadioPower(false, null);
-                }
-                // Trigger socket reset if RIL connect is called again
-                SystemProperties.set("ril.socket.reset", "1");
-                setPreferredNetworkType(mPreferredNetworkType, null);
-                setCdmaSubscriptionSource(mCdmaSubscription, null);
-                notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
-                break;
-            }
-        }
+ 
+         super.setPreferredNetworkType(networkType, response);
     }
 }
