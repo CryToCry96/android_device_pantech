@@ -24,12 +24,12 @@ import android.util.Log;
 public class BootCompletedReceiver extends BroadcastReceiver {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "G2Doze";
+    private static final String TAG = "PantechDoze";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Starting service");
-        context.startService(new Intent(context, G2DozeService.class));
+        context.startService(new Intent(context, PantechDozeService.class));
     }
 
 }

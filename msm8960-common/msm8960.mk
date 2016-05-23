@@ -112,8 +112,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    HLDoze \
-    G2Doze
+    PantechDoze
 	
 # Extended media support
 PRODUCT_PACKAGES += \
