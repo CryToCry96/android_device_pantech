@@ -38,8 +38,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # MSM8960/MPQ8064 firmware
 PRODUCT_COPY_FILES += \
-    device/pantech/ef52l/firmware/a300_pfp.fw:/system/etc/firmware/a300_pfp.fw \
-    device/pantech/ef52l/firmware/a300_pm4.fw:/system/etc/firmware/a300_pm4.fw \
     device/pantech/ef52l/firmware/cyttsp_8064_mtp.hex:/system/etc/firmware/cyttsp_8064_mtp.hex \
     device/pantech/ef52l/firmware/cyttsp_8960_cdp.hex:/system/etc/firmware/cyttsp_8960_cdp.hex \
     device/pantech/ef52l/firmware/leia_pfp_470.fw:/system/etc/firmware/leia_pfp_470.fw \

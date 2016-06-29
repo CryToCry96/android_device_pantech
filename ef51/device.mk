@@ -37,8 +37,6 @@ PRODUCT_PACKAGES += \
                        device/pantech/ef51/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
 # MSM8960/MPQ8064 firmware
 PRODUCT_COPY_FILES += \
-    device/pantech/ef51/firmware/a300_pfp.fw:/system/etc/firmware/a300_pfp.fw \
-    device/pantech/ef51/firmware/a300_pm4.fw:/system/etc/firmware/a300_pm4.fw \
     device/pantech/ef51/firmware/cyttsp_8064_mtp.hex:/system/etc/firmware/cyttsp_8064_mtp.hex \
     device/pantech/ef51/firmware/cyttsp_8960_cdp.hex:/system/etc/firmware/cyttsp_8960_cdp.hex \
     device/pantech/ef51/firmware/leia_pfp_470.fw:/system/etc/firmware/leia_pfp_470.fw \
