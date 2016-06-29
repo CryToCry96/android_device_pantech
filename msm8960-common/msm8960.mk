@@ -96,6 +96,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libqcomvoiceprocessing \
     tinymix
 	
 	
@@ -127,6 +128,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+        $(LOCAL_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml
 	
 # Wifi        
 PRODUCT_COPY_FILES += \
@@ -381,11 +383,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Sound config
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.handset.mic=analog \
-    persist.audio.lowlatency.rec=false \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=false
+    audio.offload.disable=1
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
