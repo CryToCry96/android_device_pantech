@@ -386,8 +386,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
-    ro.qc.sdk.audio.fluencetype=none \
-    audio.offload.disable=1
+    ro.qc.sdk.audio.fluencetype=fluence \
+    audio.deep_buffer.media=false
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
