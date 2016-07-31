@@ -1,4 +1,3 @@
-ifneq ($(BUILD_TINY_ANDROID),true)
 #Compile this library only for builds with the latest modem image
 
 LOCAL_PATH := $(call my-dir)
@@ -61,7 +60,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := gps.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE := gps.msm8974
 LOCAL_MODULE_OWNER := qcom
 
 LOCAL_MODULE_TAGS := optional
@@ -76,9 +75,6 @@ LOCAL_SHARED_LIBRARIES := \
     libloc_core \
     libgps.utils \
     libdl
-
-ifneq ($(filter $(TARGET_DEVICE), apq8084 msm8960), false)
-endif
 
 LOCAL_SRC_FILES += \
     loc.cpp \
@@ -102,5 +98,3 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_RELATIVE_PATH := hw
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif # not BUILD_TINY_ANDROID
