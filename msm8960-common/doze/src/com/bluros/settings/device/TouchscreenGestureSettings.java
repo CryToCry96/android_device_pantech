@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.bluros.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.cyanogenmod.internal.util.ScreenType;
+import org.bluros.internal.util.ScreenType;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
 

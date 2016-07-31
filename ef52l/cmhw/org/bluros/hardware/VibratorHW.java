@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.hardware;
+package org.bluros.hardware;
 
 
-import org.cyanogenmod.internal.util.FileUtils;
+import org.bluros.internal.util.FileUtils;
 
 public class VibratorHW {
 
