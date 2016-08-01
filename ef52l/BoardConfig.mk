@@ -1,4 +1,4 @@
-# Copyright (C) 2014 The Android Open Source Project
+# Copyright (C) 2016 BlurOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 # inherit from the proprietary version
 -include vendor/pantech/ef52l/BoardConfigVendor.mk
 
-TARGET_KERNEL_SOURCE := ../Pantech/kernel_msm8960
-TARGET_KERNEL_CONFIG := cm_ef52_defconfig
+TARGET_KERNEL_SOURCE := kernel/pantech/ef52
+TARGET_KERNEL_CONFIG := bluros_ef52_defconfig
 #TARGET_PREBUILT_KERNEL := device/pantech/ef52l/recovery/kernel
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 20971520 #20MB

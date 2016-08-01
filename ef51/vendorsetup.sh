@@ -1,5 +1,5 @@
 #
-# Copyright 2013 The Android Open Source Project
+# Copyright 2016 BlurOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,22 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_ef51-userdebug
-add_lunch_combo cm_ef51-eng
-
-#AICP
-add_lunch_combo aicp_ef51-userdebug
-add_lunch_combo aicp_ef51-eng
-
-#__ef51_init_tools()
-#{
-#	local n=
-#	
-#	for n in "$(dirname "${BASH_SOURCE[1]}")"/tools/* ; do
-#		[ -x "${n}" ] || continue
-#		alias ef51-"$(basename "${n}")"="$(realpath "${n}")"
-#	done
-#}
-#
-#__ef51_init_tools
-#unset __ef51_init_tools
+add_lunch_combo bluros_ef51-userdebug
+add_lunch_combo bluros_ef51-eng

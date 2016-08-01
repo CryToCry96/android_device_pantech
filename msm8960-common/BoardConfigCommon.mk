@@ -139,7 +139,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 #Ril class
 BOARD_RIL_CLASS := ../../../device/pantech/msm8960-common/ril/
 
-#Use cyanogenmod hardware
+#Use bluros hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 
 # Bluetooth

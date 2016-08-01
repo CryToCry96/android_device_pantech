@@ -114,10 +114,6 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libdivxdrmdecrypt \
     libstagefrighthw
-
-# Doze
-PRODUCT_PACKAGES += \
-    PantechDoze
 	
 # Extended media support
 PRODUCT_PACKAGES += \

@@ -1,5 +1,5 @@
 #
-# Copyright 2013 The Android Open Source Project
+# Copyright 2016 BlurOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_ef50l-userdebug
-add_lunch_combo cm_ef50l-eng
-
-#AICP
-add_lunch_combo aicp_ef50l-userdebug
-add_lunch_combo aicp_ef50l-eng
+add_lunch_combo bluros_ef50l-userdebug
+add_lunch_combo bluros_ef50l-eng
