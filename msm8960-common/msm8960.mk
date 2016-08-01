@@ -383,10 +383,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Sound config
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=true \
+    dump.audio_hal=false \
+    ro.qc.sdk.audio.ssr=false \
+    af.resampler.quality=255 \
+    persist.audio.fluence.mode=endfire \
+    persist.audio.vr.enable=false \
+    persist.audio.handset.mic=analog \
+    persist.audio.lowlatency.rec=false \
     ro.qc.sdk.audio.fluencetype=none \
+    persist.audio.handset.mic=analog \
     audio.deep_buffer.media=false
 
 # media
