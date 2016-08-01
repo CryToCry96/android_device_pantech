@@ -255,7 +255,6 @@
     <path name="handset-mic">
         <path name="adc3" />
         <ctl name="ADC3 Volume" value="99" />
-    <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
     </path>
 
     <path name="headphones">
@@ -278,6 +277,14 @@
         <ctl name="IIR1 INP1 Volume" value="60" />
         <ctl name="IIR1 INP1 MUX" value="DEC8" />
         <ctl name="ADC2 Volume" value="2" />
+    </path>
+
+    <path name="voice-handset">
+        <ctl name="SLIM_0_RX Channels" value="One" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="DAC1 Switch" value="1" />
+        <ctl name="EAR PA Gain" value="POS_2_DB" />
+        <ctl name="RX1 Digital Volume" value="91" />
     </path>
 
     <path name="voice-handset-tmus">

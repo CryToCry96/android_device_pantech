@@ -27,7 +27,7 @@
 <audio_platform_info>
     <acdb_ids>
         <!-- Output devices -->
-        <device name="SND_DEVICE_OUT_HANDSET" acdb_id="14" />
+        <device name="SND_DEVICE_OUT_HANDSET" acdb_id="7" />
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="14" />
         <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10" />
 
@@ -58,6 +58,6 @@
     </pcm_ids>
 
     <device_names>
-        <!-- empty -->
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" alias="handset" />
     </device_names>
 </audio_platform_info>
