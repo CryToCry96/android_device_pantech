@@ -1,0 +1,3 @@
+add_lunch_combo bluros_ef63s-user
+add_lunch_combo bluros_ef63s-userdebug
+add_lunch_combo bluros_ef63s-eng

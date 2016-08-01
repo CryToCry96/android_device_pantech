@@ -32,51 +32,24 @@
 #include <string.h>
 #include <unistd.h>
 #include <cutils/log.h>
-#include <cutils/android_reboot.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
-
 #include "init_msm.h"
-
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
     int rc;
     FILE *fp = NULL;
-    	static char tmp_buf[200];
-	static char sw_buf[10];
-	static char device_buf[10];
-	char author[PROP_VALUE_MAX];//Rom author
+    char tmp_buf[200];
+	char sw_buf[10];
+	char device_buf[10];
 	int n = 0;
 
-	//Android Versions
-	char android_ver[PROP_VALUE_MAX];
-	char build_id[PROP_VALUE_MAX];
-	property_get("ro.build.version.release", android_ver);
-	property_get("ro.build.id", build_id);
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
     rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
-        return;
-
-	//Rom author
-	property_get("ro.xdavn.author", author);
-
-        if(ISMATCH(author, "Xda Việt Nam"))
-	{
-	//Nothing
-	}
-	else 
-	{
-		android_reboot(ANDROID_RB_RESTART2, 0, "recovery");//system("/system/bin/reboot recovery");
-	}
-
-	//For device info      
+        
     fp = fopen("/dev/block/platform/msm_sdcc.1/by-name/phoneinfo", "r");
     if ( fp == NULL )
     {
@@ -95,30 +68,32 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         
         fclose(fp);
     }
-	sprintf(tmp_buf,"VEGASOFT/%s:%s/%s/%s:user/release-keys", device_buf, android_ver, build_id, sw_buf);
-	property_set("ro.build.fingerprint", tmp_buf);
-	property_set("ro.product.model", device_buf);
+
+    sprintf(tmp_buf,"pantech/VEGA/%s:5.0.2/LRX22G/%s:user/release-keys",device_buf, sw_buf);
+    property_set("ro.build.fingerprint", tmp_buf);
+    property_set("ro.product.model", device_buf);
     
     if(!strncmp(device_buf, "IM-A910S", 8))
     {
-    	sprintf(tmp_buf,"ef63s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	sprintf(tmp_buf,"bluros_ef63s-userdebug 5.0.2 LRX22G %s release-keys", sw_buf);
     	property_set("ro.product.device", "ef63s");
     }
     else if(!strncmp(device_buf, "IM-A910K", 8))
    	{
-    	sprintf(tmp_buf,"ef63k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	sprintf(tmp_buf,"bluros_ef63k-userdebug 5.0.2 LRX22G %s release-keys", sw_buf);
     	property_set("ro.product.device", "ef63k");
     }
     else if(!strncmp(device_buf, "IM-A910L", 8))
     {
-    	sprintf(tmp_buf,"ef63l-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
+    	sprintf(tmp_buf,"bluros_ef63l-userdebug 5.0.2 LRX22G %s release-keys", sw_buf);
     	property_set("ro.product.device", "ef63l");
     }
     else
     {
-    	sprintf(tmp_buf,"a910-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "a910");
+    	sprintf(tmp_buf,"bluros_ef63s-userdebug 5.0.2 LRX22G S0223215 release-keys");
+    	property_set("ro.product.device", "ef63s");
     }
     	
     property_set("ro.build.description", tmp_buf);      
 }
+
