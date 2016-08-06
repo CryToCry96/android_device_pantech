@@ -69,8 +69,8 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 
 #Init
 TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/pantech/msm8960-common/init/init_pantech.cpp
+TARGET_INIT_VENDOR_LIB := libinit_pantech
+TARGET_RECOVERY_DEVICE_MODULES := libinit_pantech
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE 		:= true
