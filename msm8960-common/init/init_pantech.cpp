@@ -61,26 +61,18 @@ void vendor_load_properties() //Build as standalone init
 	property_get("ro.build.version.release", android_ver);
 	property_get("ro.build.id", build_id);
 
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
-
 	//Prop for ril class
 	property_set("ro.telephony.ril_class", "SkyHLRIL");
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    	rc = property_get("ro.board.platform", platform);
+
+    if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
 	//Rom author
 	property_get("ro.rom.author", author);
 
-        if(ISMATCH(author, "Lê Hoàng - VegaViet-DevTeam"))
-	{
-	//Nothing
-	}
-	else 
+        if(strncmp(author, "Lê Hoàng", PROP_VALUE_MAX))
 	{
 		android_reboot(ANDROID_RB_RESTART2, 0, "recovery");//system("/system/bin/reboot recovery");
 	}
