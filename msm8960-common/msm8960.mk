@@ -98,7 +98,10 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libqcomvoiceprocessing \
     tinymix
-	
+
+# Voice processing
+PRODUCT_PACKAGES += \
+    libqcomvoiceprocessing
 	
 # Omx
 PRODUCT_PACKAGES += \
