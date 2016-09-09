@@ -109,8 +109,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
         videoMode = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
     }
 
-    params.set(android::CameraParameters::KEY_QC_SUPPORTED_ISO_MODES, iso_values[id]);
-
     /* Set supported scene modes */
   /*  if (params.get(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES)) {
         params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES,
@@ -159,29 +157,6 @@ static char *camera_fixup_setparams(int id, const char *settings)
 
     if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
         videoMode = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
-    }
-
-    if (videoMode) {
-       // params.set("dis", "disable");
-        params.set(android::CameraParameters::KEY_QC_ZSL, "off");
-    } else {
-        params.set(android::CameraParameters::KEY_QC_ZSL, "on");
-    }
-
-    if(params.get("iso")) {
-        const char* isoMode = params.get(android::CameraParameters::KEY_QC_ISO_MODE);
-        if(strcmp(isoMode, "ISO100") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "100");
-        else if(strcmp(isoMode, "ISO200") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "200");
-        else if(strcmp(isoMode, "ISO400") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "400");
-        else if(strcmp(isoMode, "ISO800") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "800");
-        else if(strcmp(isoMode, "ISO1600") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "1600");
-        else if(strcmp(isoMode, "ISO3200") == 0)
-            params.set(android::CameraParameters::KEY_QC_ISO_MODE, "3200");
     }
 
 	//HDR

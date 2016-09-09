@@ -1,13 +1,7 @@
 allow init app_data_file:dir { write read open add_name setattr };
 allow init app_data_file:lnk_file create;
-allow init drmserver_service:service_manager add;
 allow init firmware_file:dir mounton;
-allow init keystore_service:service_manager add;
-allow init mediaserver_service:service_manager add;
 allow init self:rawip_socket { getopt create setopt };
-allow init shell_data_file:dir { write add_name };
-allow init shell_data_file:lnk_file { create getattr };
-allow init surfaceflinger_service:service_manager add;
 allow init system_server:process { dyntransition getattr };
 
 allow init fuse:dir setattr;

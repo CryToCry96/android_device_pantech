@@ -3,10 +3,10 @@ TARGET_SCREEN_HEIGHT := 1080
 TARGET_SCREEN_WIDTH := 720
 
 # Inherit some common BlurOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/bluros/configs/common_full_phone.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/bluros/configs/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/pantech/ef52l/full_ef52l.mk)
@@ -15,7 +15,7 @@ BOARD_HARDWARE_CLASS := device/pantech/ef52l/cmhw/
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ef52l
-PRODUCT_NAME := cm_ef52l
+PRODUCT_NAME := bluros_ef52l
 PRODUCT_BRAND := Vega
 PRODUCT_MODEL := Vega Iron
 PRODUCT_MANUFACTURER := Pantech

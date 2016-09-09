@@ -26,9 +26,7 @@ $(warning Found AICP build)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay_aicp
 endif
 
-#Preinstall
-#PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/preinstall/RootEx/RootExplorer_3.3.5For3.0.apk:system/vendor/preinstall/RootExplorer_3.3.7ModFor3.0.apk \
+
 #	$(LOCAL_PATH)/preinstall/Titanium/Titanium_Backup_PRO_v7.2.1.2.apk:system/vendor/preinstall/Titanium_Backup_PRO_v7.2.1.2.apk
 
 #Dolby
@@ -46,10 +44,6 @@ endif
 
 #Google Camera
 PRODUCT_PACKAGES += Snap #GCamera2 Snapdragon camera
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -126,7 +120,6 @@ PRODUCT_PACKAGES += \
 
 # Audio Policy Config
 PRODUCT_COPY_FILES += \
-    	$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
         $(LOCAL_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml
 	
@@ -262,6 +255,11 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
+
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += telephony-ext
 
 # NFC Support
 PRODUCT_PACKAGES += \

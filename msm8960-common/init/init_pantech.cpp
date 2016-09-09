@@ -39,8 +39,9 @@
 #include "log.h"
 #include "util.h"
 
-//void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
-void vendor_load_properties() //Build as standalone init
+#include "init_msm.h"
+
+void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     char platform[PROP_VALUE_MAX];
     //char bootloader[PROP_VALUE_MAX];
@@ -60,18 +61,26 @@ void vendor_load_properties() //Build as standalone init
 	property_get("ro.build.version.release", android_ver);
 	property_get("ro.build.id", build_id);
 
+
+    UNUSED(msm_id);
+    UNUSED(msm_ver);
+    UNUSED(board_type);
+
 	//Prop for ril class
 	property_set("ro.telephony.ril_class", "SkyHLRIL");
 
-    	rc = property_get("ro.board.platform", platform);
-
-    if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
+    rc = property_get("ro.board.platform", platform);
+    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
 	//Rom author
 	property_get("ro.rom.author", author);
 
-        if(strncmp(author, "Lê Hoàng", PROP_VALUE_MAX))
+        if(ISMATCH(author, "xdavn"))
+	{
+	//Nothing
+	}
+	else 
 	{
 		android_reboot(ANDROID_RB_RESTART2, 0, "recovery");//system("/system/bin/reboot recovery");
 	}

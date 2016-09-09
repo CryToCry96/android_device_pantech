@@ -68,9 +68,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 
 #Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_pantech
-TARGET_RECOVERY_DEVICE_MODULES := libinit_pantech
+#TARGET_UNIFIED_DEVICE := true
+#TARGET_INIT_VENDOR_LIB := libinit_pantech
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_pantech
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE 		:= true
@@ -116,7 +116,6 @@ BOARD_USES_SEPERATED_AUDIO_INPUT := true
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
-
 # Media
 #TARGET_QCOM_MEDIA_VARIANT 		:= caf
 
@@ -132,7 +131,7 @@ BOARD_USES_EXTRA_THERMAL_SENSOR 	:= true
 
 BOARD_USES_CAMERA_FAST_AUTOFOCUS 	:= true
 # Camera
-COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+#COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
@@ -142,10 +141,6 @@ BOARD_RIL_CLASS := ../../../device/pantech/msm8960-common/ril/
 #Use cyanogenmod hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 
-# Bluetooth
-BOARD_HAVE_BLUETOOTH 			:= true
-BOARD_HAVE_BLUETOOTH_QCOM 		:= true
-BLUETOOTH_HCI_USE_MCT 			:= true
 
 #Preload Boot Animation
 TARGET_BOOTANIMATION_PRELOAD 		:= true
@@ -166,21 +161,11 @@ TARGET_POWERHAL_VARIANT			:= qcom
 # Webkit
 #TARGET_FORCE_CPU_UPLOAD 			:= true
 
-# Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
-DONT_DEXPREOPT_PREBUILTS := true
-
 # Init
 TARGET_NO_INITLOGO := true
 
 # Charger
-BOARD_CHARGER_ENABLE_SUSPEND 		:= true
+BOARD_CHARGER_ENABLE_SUSPEND 		:= false
 #BOARD_CHARGER_SHOW_PERCENTAGE	:= true
 #BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
@@ -192,10 +177,10 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DPANTECH_CAMERA_HARDWARE
+#COMMON_GLOBAL_CFLAGS += -DPANTECH_CAMERA_HARDWARE
 
 # Flags
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+# COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 TARGET_RECOVERY_QCOM_RTC_FIX 			:= true
 BOARD_SUPPRESS_SECURE_ERASE 			:= true
@@ -219,23 +204,13 @@ PRODUCT_PREBUILT_WEBVIEWCHROMIUM 	:= yes
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT 			:= true
 
+
 # qcom sepolicy
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
        device/pantech/msm8960-common/sepolicy
 
-#TARGET_GCC_VERSION_EXP := 4.8
-#KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
-#KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/../arm-cortex_a15-linux-gnueabihf-linaro_4.9/bin"
-#-include device/pantech/msm8960-common/sm.mk
-#include device/pantech/msm8960-common/gcc_config.mk
-
-#TWRP config
-#####
-#RECOVERY_VARIANT := twrp
-#TARGET_RECOVERY_FSTAB := device/pantech/msm8960-common/twrp/twrp.fstab #Enable this if build TWRP
-#####
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true

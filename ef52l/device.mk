@@ -82,7 +82,7 @@ PRODUCT_PACKAGES += \
     Torch
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=320
+	ro.sf.lcd_density=300
 
 #Copy kernel header if using prebuilt kernel
 #ifneq ($(OUT),)

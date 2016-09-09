@@ -1,7 +1,7 @@
 #
 # system.prop for ef52l
 #
-ro.rom.author=Lê Hoàng
+ro.rom.author=xdavn
 #
 #
 rild.libpath=/system/lib/libril-qc-qmi-1.so
