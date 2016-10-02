@@ -21,29 +21,12 @@ $(call inherit-product, vendor/pantech/msm8960-common/msm8960-common-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-ifdef AICP_ROM
-$(warning Found AICP build)
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay_aicp
-endif
-
-
-#	$(LOCAL_PATH)/preinstall/Titanium/Titanium_Backup_PRO_v7.2.1.2.apk:system/vendor/preinstall/Titanium_Backup_PRO_v7.2.1.2.apk
-
-#Dolby
-#PRODUCT_PACKAGES += As AsUI
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/Dolby/addon.d/23-dap.sh:system/addon.d/23-dap.sh \
-#	$(LOCAL_PATH)/Dolby/etc/dolby/ds-default.xml:system/etc/dolby/ds-default.xml \
-#	$(LOCAL_PATH)/Dolby/lib/libdlbdapstorage.so:system/lib/libdlbdapstorage.so \
-#	$(LOCAL_PATH)/Dolby/lib/soundfx/libswdap-mod.so:system/lib/soundfx/libswdap-mod.so
-
-#CAF packages
-#PRODUCT_PACKAGES += \
-#	SnapdragonCamera \
-#	FastBoot
-
 #Google Camera
 PRODUCT_PACKAGES += Snap #GCamera2 Snapdragon camera
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -53,7 +36,6 @@ PRODUCT_PACKAGES += \
         hostapd_default.conf \
         hostapd.accept \
         hostapd.deny \
-	dhcpcd.conf \
 	wpa_supplicant
 
 PRODUCT_PACKAGES += \
