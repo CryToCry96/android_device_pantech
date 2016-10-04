@@ -1,6 +1,5 @@
 /*
-   Copyright (c) 2013, The Linux Foundation. All rights reserved.
-
+   Copyright (c) 2016, XDAVN
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -28,144 +26,55 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <cutils/log.h>
-#include <cutils/android_reboot.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+void vendor_load_properties()
 {
-    char platform[PROP_VALUE_MAX];
-    //char bootloader[PROP_VALUE_MAX];
-    //char device[PROP_VALUE_MAX];
-    //char devicename[PROP_VALUE_MAX];
-    int rc;
+    std::string platform;
+    std::string device;
+    int n = 0;
+    char device_buf[PROP_VALUE_MAX];
     FILE *fp = NULL;
-    	static char tmp_buf[200];
-	static char sw_buf[10];
-	static char device_buf[10];
-	char author[PROP_VALUE_MAX];//Rom author
-	int n = 0;
 
-	//Android Versions
-	char android_ver[PROP_VALUE_MAX];
-	char build_id[PROP_VALUE_MAX];
-	property_get("ro.build.version.release", android_ver);
-	property_get("ro.build.id", build_id);
-
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
-
-	//Prop for ril class
-	property_set("ro.telephony.ril_class", "SkyHLRIL");
-
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    platform = property_get("ro.board.platform");
+    if (platform != ANDROID_TARGET)
         return;
 
-	//Rom author
-	property_get("ro.rom.author", author);
-
-        if(ISMATCH(author, "xdavn"))
-	{
-	//Nothing
-	}
-	else 
-	{
-		android_reboot(ANDROID_RB_RESTART2, 0, "recovery");//system("/system/bin/reboot recovery");
-	}
-
-
-	//For device info      
     fp = fopen("/dev/block/platform/msm_sdcc.1/by-name/rawdata", "r");
     if ( fp == NULL )
     {
-        ALOGD("Failed to open info for board version read");
-	property_set("ro.product.device", "Please reinstall bootloader"); //Fix Unknown device
+        INFO("Failed to open info for board version read");
         return;
     }
     else
     {
         fseek(fp,0x24,SEEK_SET);
         n = fread(device_buf, 8, 1, fp);
-        device_buf[8] = '\0';
-        
-        fseek(fp,0x34,SEEK_SET);
-        n = fread(sw_buf, 8, 1, fp);
-        sw_buf[8] = '\0';
-        
+        device_buf[8] = '\0';        
         fclose(fp);
     }
-    
-    
+	//Prop for ril class
+	property_set("ro.telephony.ril_class", "SkyHLRIL");
 
-	sprintf(tmp_buf,"Lê_Hoàng/VEGA/%s:%s/%s/%s:user/release-keys", device_buf, android_ver, build_id, sw_buf);
-	property_set("ro.build.fingerprint", tmp_buf);
-	property_set("ro.product.model", device_buf);
-    
-    if(!strncmp(device_buf, "IM-A870S", 8))
+    property_set("ro.product.model", device_buf);
+
+    if (strstr(device_buf, "IM-A870S")) 
     {
-    	sprintf(tmp_buf,"ef52s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef52s");
-    }
-    else if(!strncmp(device_buf, "IM-A870K", 8))
+        property_set("ro.product.device", "ef52l");
+    } 
+    else if (strstr(device_buf, "IM-A870K")) 
     {
-    	sprintf(tmp_buf,"ef52k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef52k");
-    }
-    else if(!strncmp(device_buf, "IM-A870L", 8))
+        property_set("ro.product.device", "ef52k");
+    } 
+    else if (strstr(device_buf, "IM-A870L"))
     {
-    	sprintf(tmp_buf,"ef52l-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef52l");
-	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
+        property_set("ro.product.device", "ef52l");
+		property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
     }
-    else if(!strncmp(device_buf, "IM-A860S", 8))
-    {
-    	sprintf(tmp_buf,"ef52s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef51s");
-    }
-    else if(!strncmp(device_buf, "IM-A860K", 8))
-   	{
-    	sprintf(tmp_buf,"ef52k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef51k");
-    }
-    else if(!strncmp(device_buf, "IM-A860L", 8))
-    {
-    	sprintf(tmp_buf,"ef51-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef51l");
-	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
-    }
-    else if(!strncmp(device_buf, "IM-A850S", 8))
-    {
-    	sprintf(tmp_buf,"ef48s-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef48s");
-    }
-    else if(!strncmp(device_buf, "IM-A850K", 8))
-   	{
-    	sprintf(tmp_buf,"ef49k-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef49k");
-    }
-    else if(!strncmp(device_buf, "IM-A850L", 8))
-    {
-    	sprintf(tmp_buf,"ef50l-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "ef50l");
-	property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
-    }
-    else
-    {
-    	sprintf(tmp_buf,"msm8960-userdebug %s %s %s release-keys", android_ver, build_id, sw_buf);
-    	property_set("ro.product.device", "Pantech");
-    }
-    	
-    property_set("ro.build.description", tmp_buf);      
 }
