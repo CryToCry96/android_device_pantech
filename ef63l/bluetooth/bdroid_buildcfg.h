@@ -19,7 +19,7 @@
 
 #define BLUETOOTH_QTI_SW TRUE
 
-#define BTM_DEF_LOCAL_NAME   "VEGA IRON 2"
+#define BTM_DEF_LOCAL_NAME   "Vega Iron 2 XDAVN"
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_L2CAP_CHANNELS    16
@@ -29,4 +29,6 @@
 #define BLE_PERIPHERAL_ADV_NAME  FALSE
 #define BT_CLEAN_TURN_ON_DISABLED 1
 
+/* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
+#define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
 #endif

@@ -29,6 +29,10 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -43,7 +47,6 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -66,7 +69,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
-
+	
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
@@ -76,6 +79,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb \
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
@@ -100,15 +104,15 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # Data
 PRODUCT_PACKAGES += \
     librmnetctl \
     rmnetcli
 
+# Doze
+PRODUCT_PACKAGES += \
+    VegaDoze
+	
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
@@ -123,15 +127,10 @@ PRODUCT_PACKAGES += \
     Gello
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.msm8974
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
-    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
+    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf 
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -157,14 +156,16 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
-# Media
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+
+# OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
@@ -207,10 +208,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
 
-    
 # Telephony-ext
-PRODUCT_PACKAGES += telephony-ext
-PRODUCT_BOOT_JARS += telephony-ext
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 # Thermal config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
@@ -219,31 +223,32 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
     
-
-ADDITIONAL_DEFAULT_PROPERTIES += \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	ro.allow.mock.location=1
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.codecremote=false
+	
+# APN
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml
 
 # WiFi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
+PRODUCT_PACKAGES += \
+    hostapd \
+    wcnss_service \
+    wpa_supplicant
 
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
-    libwpa_client \
-    hostapd \
-    wpa_supplicant \
-    wpa_supplicant.conf \
-    wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf \
     hostapd_default.conf \
     hostapd.accept \
-    hostapd.deny
-
-PRODUCT_PACKAGES += \
-    wcnss_service
+    hostapd.deny \
+    wpa_supplicant.conf \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf
 
 # Inherit from pantech-common
+$(call inherit-product, device/pantech/common/common.mk)
