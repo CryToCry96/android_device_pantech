@@ -94,11 +94,11 @@ void vendor_load_properties()
 	// A850
     if (strstr(device_buf, "IM-A850S")) 
     {
-        property_set("ro.product.device", "ef50l");
+        property_set("ro.product.device", "ef48s");
     } 
     else if (strstr(device_buf, "IM-A850K")) 
     {
-        property_set("ro.product.device", "ef50k");
+        property_set("ro.product.device", "ef49k");
     } 
     else if (strstr(device_buf, "IM-A850L"))
     {
