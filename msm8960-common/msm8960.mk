@@ -113,12 +113,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	libcnefeatureconfig
-	
-# For Call
-PRODUCT_PACKAGES += \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += telephony-ext
 
 # Power
 PRODUCT_PACKAGES += \
