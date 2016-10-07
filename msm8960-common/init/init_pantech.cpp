@@ -63,7 +63,7 @@ void vendor_load_properties()
 	property_set("ro.telephony.ril_class", "SkyHLRIL");
 
     property_set("ro.product.model", device_buf);
-
+	// A870
     if (strstr(device_buf, "IM-A870S")) 
     {
         property_set("ro.product.device", "ef52l");
@@ -75,6 +75,34 @@ void vendor_load_properties()
     else if (strstr(device_buf, "IM-A870L"))
     {
         property_set("ro.product.device", "ef52l");
+		property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
+    }
+    //A860
+    if (strstr(device_buf, "IM-A860S")) 
+    {
+        property_set("ro.product.device", "ef51l");
+    } 
+    else if (strstr(device_buf, "IM-A860K")) 
+    {
+        property_set("ro.product.device", "ef51k");
+    } 
+    else if (strstr(device_buf, "IM-A860L"))
+    {
+        property_set("ro.product.device", "ef51l");
+		property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
+    }
+	// A850
+    if (strstr(device_buf, "IM-A850S")) 
+    {
+        property_set("ro.product.device", "ef50l");
+    } 
+    else if (strstr(device_buf, "IM-A850K")) 
+    {
+        property_set("ro.product.device", "ef50k");
+    } 
+    else if (strstr(device_buf, "IM-A850L"))
+    {
+        property_set("ro.product.device", "ef50l");
 		property_set("telephony.lteOnCdmaDevice", "1"); //Only L device support CDMA-2000 1xEV-DO
     }
 }
