@@ -66,7 +66,7 @@ void vendor_load_properties()
 	// A870
     if (strstr(device_buf, "IM-A870S")) 
     {
-        property_set("ro.product.device", "ef52l");
+        property_set("ro.product.device", "ef52s");
     } 
     else if (strstr(device_buf, "IM-A870K")) 
     {
