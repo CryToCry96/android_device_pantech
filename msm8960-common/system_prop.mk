@@ -24,6 +24,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd \
 	persist.sys.dalvik.multithread=true \
 
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
 # Navigation Bar
 PRODUCT_PROPERTY_OVERRIDES += \
 	qemu.hw.mainkeys=0
