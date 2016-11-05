@@ -109,6 +109,9 @@ BOARD_RIL_CLASS := ../../../device/pantech/msm8960-common/ril/
 #Use cyanogenmod hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 
+#Live display
+LIVEDISPLAY_TARGETS += msm8960
+
 #Preload Boot Animation
 TARGET_BOOTANIMATION_PRELOAD 		:= true
 
