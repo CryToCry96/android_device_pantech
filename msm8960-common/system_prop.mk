@@ -116,3 +116,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.ringtone=Orion.ogg
+
+PRODUCT_PROPERTY_OVERRIDES += \
+      qcom.bluetooth.soc=smd \
+      ro.qualcomm.bt.hci_transport=smd \
+      ro.bt.bdaddr_path=/data/misc/bluetooth/bdaddr
