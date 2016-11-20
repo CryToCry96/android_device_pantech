@@ -62,10 +62,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8960 \
     libgenlock \
     memtrack.msm8960
-
-# Display calibration
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
 	
 # Audio
 PRODUCT_PACKAGES += \
