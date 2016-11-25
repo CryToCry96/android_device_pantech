@@ -90,7 +90,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dump.audio_hal=false \
     ro.qc.sdk.audio.ssr=false \
     af.resampler.quality=255 \
-    persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false \
