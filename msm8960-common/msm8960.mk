@@ -55,6 +55,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Gello
 
+# DozeAPP
+PRODUCT_PACKAGES += \
+    PantechDoze
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
